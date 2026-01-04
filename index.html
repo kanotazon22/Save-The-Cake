@@ -13,7 +13,6 @@
             --cream: #FFF5F5;
             --soft-pink: #FFD1DA;
             --hot-pink: #FF6B8E;
-            --candy-blue: #A0E7E5;
             --text-color: #5D4037;
         }
 
@@ -21,16 +20,10 @@
             font-family: 'Quicksand', sans-serif;
             background-color: var(--cream);
             color: var(--text-color);
-            overflow-x: hidden;
+            transition: all 0.5s ease-in-out;
         }
 
-        .font-pacifico {
-            font-family: 'Pacifico', cursive;
-        }
-
-        .cake-gradient {
-            background: linear-gradient(135deg, #FFD1DA 0%, #FFB7C5 100%);
-        }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
 
         .btn-candy {
             background-color: var(--hot-pink);
@@ -41,137 +34,141 @@
         .btn-candy:hover {
             transform: translateY(2px);
             box-shadow: 0 2px 0px #D84B6B;
-            background-color: #FF85A2;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 50;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
+            opacity: 0.9;
         }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.9);
             border: 2px solid var(--soft-pink);
-            border-radius: 2rem;
+            border-radius: 2.5rem;
         }
 
         .candy-border {
             border: 8px dashed var(--soft-pink);
         }
 
-        /* Decorative Background Elements */
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
         .bg-circle {
             position: fixed;
             border-radius: 50%;
             z-index: -1;
-            filter: blur(50px);
-            opacity: 0.5;
+            filter: blur(60px);
+            opacity: 0.4;
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Sprinkles -->
+    <!-- Background Elements -->
     <div class="bg-circle w-64 h-64 bg-pink-200 top-10 -left-20"></div>
-    <div class="bg-circle w-96 h-96 bg-blue-100 bottom-10 -right-20"></div>
+    <div class="bg-circle w-96 h-96 bg-red-100 bottom-10 -right-20"></div>
 
-    <!-- Main Content -->
-    <main class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
-        
-        <div class="glass-card p-8 md:p-12 max-w-2xl w-full shadow-2xl relative overflow-hidden">
-            <!-- Decorative dashed line -->
-            <div class="absolute inset-0 candy-border pointer-events-none opacity-40"></div>
+    <!-- MAIN PAGE -->
+    <div id="main-page" class="page active min-h-screen flex flex-col items-center justify-center p-6">
+        <div class="glass-card p-10 md:p-16 max-w-2xl w-full shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 candy-border pointer-events-none opacity-30"></div>
 
-            <h1 class="text-5xl md:text-7xl font-pacifico text-pink-500 mb-4">Save The Cake</h1>
-            <p class="text-xl md:text-2xl font-semibold mb-8 text-pink-400 uppercase tracking-widest">A Delicious Adventure by Simla</p>
+            <h1 class="text-6xl md:text-8xl font-pacifico text-pink-500 mb-6">Save The Cake</h1>
+            <p class="text-xl md:text-2xl font-bold mb-10 text-pink-400 uppercase tracking-widest">A Delicious Adventure by Simla</p>
 
-            <div class="space-y-6">
-                <p class="text-lg leading-relaxed">
-                    Welcome to the sweetest challenge! Embark on a journey to protect your delicious treats from the hungry swarms. Pure fun, simple mechanics, and zero stress.
+            <div class="space-y-8">
+                <p class="text-xl leading-relaxed font-medium">
+                    Protect your precious cakes from the hungry swarms in this sweet and addictive arcade challenge.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-                    <button onclick="alert('Download link coming soon!')" class="btn-candy text-white font-bold py-4 px-10 rounded-full text-lg">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mt-12">
+                    <a href="https://simla78.itch.io/save-the-cake" target="_blank" class="btn-candy text-white font-bold py-5 px-12 rounded-full text-xl flex items-center justify-center">
                         Download APK
-                    </button>
-                    <button onclick="openModal()" class="bg-white border-2 border-pink-300 text-pink-500 font-bold py-4 px-10 rounded-full text-lg hover:bg-pink-50 transition-colors">
+                    </a>
+                    <button onclick="navigateTo('privacy-page')" class="bg-white border-2 border-pink-300 text-pink-500 font-bold py-5 px-12 rounded-full text-xl hover:bg-pink-50 transition-all">
                         Privacy Policy
                     </button>
                 </div>
             </div>
 
-            <footer class="mt-12 pt-8 border-t border-pink-100 text-sm text-pink-300">
-                &copy; 2026 Simla Games. All rights reserved.
+            <footer class="mt-16 pt-8 border-t border-pink-100 text-pink-300 font-semibold">
+                &copy; 2026 Simla Games
             </footer>
         </div>
-    </main>
+    </div>
 
-    <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="modal">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
-                <button onclick="closeModal()" class="absolute top-4 right-6 text-3xl text-pink-300 hover:text-pink-500">&times;</button>
-                
-                <h2 class="text-3xl font-bold text-pink-500 mb-6">Privacy Policy</h2>
-                
-                <div class="text-left text-gray-600 space-y-4 leading-relaxed">
-                    <p class="italic text-sm">Effective as of 2026-01-04</p>
-                    
-                    <p>This privacy policy applies to the <strong>Save The Cake</strong> app (hereby referred to as "Application") for mobile devices that was created by <strong>Simla</strong> (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".</p>
+    <!-- PRIVACY POLICY PAGE -->
+    <div id="privacy-page" class="page min-h-screen py-12 px-6">
+        <div class="max-w-3xl mx-auto bg-white rounded-[3rem] shadow-xl p-10 md:p-16 relative">
+            <button onclick="navigateTo('main-page')" class="mb-10 text-pink-500 font-bold flex items-center hover:translate-x-1 transition-transform">
+                &larr; Back to Home
+            </button>
 
-                    <h3 class="font-bold text-pink-400 text-xl mt-6">Information Collection and Use</h3>
+            <h2 class="text-4xl md:text-5xl font-pacifico text-pink-500 mb-8 text-center">Privacy Policy</h2>
+            
+            <div class="text-left text-gray-700 space-y-6 leading-relaxed text-lg">
+                <p class="italic text-sm text-pink-400">Effective as of 2026-01-04</p>
+                
+                <p>This privacy policy applies to the <strong>Save The Cake</strong> app for mobile devices that was created by <strong>Simla</strong> as a Free service. This service is intended for use "AS IS".</p>
+
+                <div class="bg-pink-50 p-6 rounded-3xl border-l-4 border-pink-400">
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Information Collection and Use</h3>
                     <p>The Application <strong>DOES NOT</strong> collect, store, or transmit any personally identifiable information or user data.</p>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li>Does NOT collect your IP address.</li>
-                        <li>Does NOT track your location.</li>
-                        <li>Does NOT access your contacts or files.</li>
-                        <li>Does NOT use any third-party analytics or advertising tools.</li>
-                    </ul>
-                    <p>All gameplay data (such as high scores) is stored locally on your device and is not accessible by the Service Provider.</p>
-
-                    <h3 class="font-bold text-pink-400 text-xl mt-6">Third Party Access</h3>
-                    <p>Since the Application does not collect any information, no data is shared with third parties.</p>
-
-                    <h3 class="font-bold text-pink-400 text-xl mt-6">Children</h3>
-                    <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13. The Application does not collect any personally identifiable information from any user, including children.</p>
-
-                    <h3 class="font-bold text-pink-400 text-xl mt-6">Contact Us</h3>
-                    <p>If you have any questions regarding privacy while using the Application, please contact the Service Provider via email at <span class="text-pink-500 underline">kanotazon22@gmail.com</span>.</p>
                 </div>
 
-                <div class="mt-8 text-center">
-                    <button onclick="closeModal()" class="btn-candy text-white font-bold py-3 px-8 rounded-full">
-                        Close
-                    </button>
-                </div>
+                <p>Unlike many other applications, this Application:</p>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 ml-4">
+                    <li class="flex items-center text-pink-600 font-semibold">• No IP Tracking</li>
+                    <li class="flex items-center text-pink-600 font-semibold">• No Location Tracking</li>
+                    <li class="flex items-center text-pink-600 font-semibold">• No Contacts Access</li>
+                    <li class="flex items-center text-pink-600 font-semibold">• No Behavior Analytics</li>
+                </ul>
+
+                <p>All gameplay data (such as high scores) is stored locally on your device and is not accessible by the Service Provider.</p>
+
+                <h3 class="font-bold text-pink-500 text-2xl pt-4">Third Party Access</h3>
+                <p>Since the Application does not collect any information, no data is shared with third parties.</p>
+
+                <h3 class="font-bold text-pink-500 text-2xl pt-4">Children</h3>
+                <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13. The Application does not collect any personally identifiable information from any user, including children.</p>
+
+                <h3 class="font-bold text-pink-500 text-2xl pt-4">Contact Us</h3>
+                <p>If you have any questions, please contact Simla via email at:</p>
+                <p class="bg-pink-100 inline-block px-4 py-2 rounded-xl text-pink-700 font-bold">kanotazon22@gmail.com</p>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button onclick="navigateTo('main-page')" class="btn-candy text-white font-bold py-4 px-12 rounded-full shadow-lg">
+                    Got it!
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        const modal = document.getElementById("privacyModal");
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
 
-        function openModal() {
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.add('active');
 
-        function closeModal() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
+            // Scroll to top
+            window.scrollTo(0, 0);
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
+            // Change background color slightly based on page
+            if(pageId === 'privacy-page') {
+                document.body.style.backgroundColor = '#FFF0F3';
+            } else {
+                document.body.style.backgroundColor = '#FFF5F5';
             }
         }
     </script>
