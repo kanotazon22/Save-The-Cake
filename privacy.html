@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Save The Cake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --cream: #FFF5F5;
+            --soft-pink: #FFD1DA;
+            --hot-pink: #FF6B8E;
+            --text-color: #5D4037;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE8EC 100%);
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+
+        .btn-candy {
+            background: linear-gradient(135deg, #FF6B8E 0%, #FF4D75 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0px #D84B6B;
+        }
+
+        .btn-candy:hover {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0px #D84B6B;
+        }
+
+        .btn-candy:active {
+            transform: translateY(6px);
+            box-shadow: 0 0px 0px #D84B6B;
+        }
+
+        .bg-decoration {
+            position: fixed;
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Decorations -->
+    <div class="bg-decoration w-80 h-80 bg-pink-300 top-20 -left-32"></div>
+    <div class="bg-decoration w-96 h-96 bg-red-200 bottom-10 -right-40"></div>
+
+    <div class="min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-3xl w-full bg-white rounded-3xl shadow-2xl p-10 md:p-16 relative z-10">
+            
+            <a href="index.html" 
+               class="mb-10 text-pink-500 font-bold text-lg flex items-center hover:translate-x-2 transition-transform inline-block">
+                &larr; Back to Home
+            </a>
+
+            <h2 class="text-4xl md:text-5xl font-pacifico text-pink-500 mb-3 text-center">
+                Privacy Policy
+            </h2>
+            <p class="text-pink-400 italic text-center mb-10">Effective as of January 4, 2026</p>
+            
+            <div class="space-y-8 text-gray-700 text-lg leading-relaxed">
+                
+                <div>
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Information Collection and Use</h3>
+                    <p class="mb-4">
+                        The Application <strong>DOES NOT</strong> collect, store, or transmit any personally identifiable information or user data.
+                    </p>
+                    <p class="mb-4">Unlike many other applications, this Application does not track:</p>
+                    <p class="ml-6">
+                        IP addresses, location data, contacts, behavior analytics, device information, or any other personal data.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Data Storage</h3>
+                    <p>
+                        All gameplay data such as high scores and progress are stored locally on your device and are not accessible by the Service Provider.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Third Party Access</h3>
+                    <p>
+                        Since the Application does not collect any information, no data is shared with third parties.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Children</h3>
+                    <p>
+                        The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13. The Application does not collect any personally identifiable information from any user, including children.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-pink-600 text-2xl mb-4">Contact Us</h3>
+                    <p class="mb-3">If you have any questions, please contact Simla via email:</p>
+                    <p class="font-bold text-pink-600 text-xl">kanotazon22@gmail.com</p>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="index.html" 
+                   class="btn-candy text-white font-bold py-4 px-12 rounded-full shadow-lg text-xl inline-block">
+                    Got it!
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
